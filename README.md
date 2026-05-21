@@ -1,47 +1,62 @@
-# CODEREVIEW.AI
+# ⚡ CodeSpectra
 
-Brutally honest AI code review for any public GitHub URL. Stateless. No DB. No auth. Streams as it reasons.
+> Instant AI code review for any public GitHub URL. Paste a link, get the verdict.
 
-## What it does
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js" />
+  <img src="https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript" />
+  <img src="https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwindcss" />
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" />
+</p>
 
-Paste a GitHub URL — repo, PR, file, or directory — and get a structured review covering security, performance, architecture, and style. Powered by an OpenAI-compatible LLM (defaults to MiMo-V2.5-Pro).
+---
 
-## Stack
+## ✨ Features
 
-- **Next.js 14** (App Router) + TypeScript
-- **Tailwind v3** with a dark-brutalism design system
-- **Server-Sent Events** for streamed output
-- **GitHub public API** (no OAuth) — works on any public repo
-- **Zero database**, zero state, zero tracking
+- 🔍 **Security Analysis** — SQL injection, XSS, secrets in code, auth bypass
+- ⚡ **Performance Review** — N+1 queries, blocking I/O, memory leaks, hot paths
+- 🏗 **Architecture Audit** — Coupling, abstractions, error handling, testability
+- 🎨 **Glassmorphism UI** — Modern dark aesthetic with aurora effects
+- 📡 **Real-time Streaming** — SSE-powered live output as AI thinks
+- 🔒 **Zero State** — No database, no auth, no tracking, no cookies
 
-## Run locally
+## 🚀 Quick Start
 
 ```bash
-cp .env.example .env.local
-# fill in LLM_API_KEY (and optionally GITHUB_TOKEN to lift rate limits)
+# Clone
+git clone https://github.com/seirakana0-wq/CodeSpectra.git
+cd CodeSpectra
 
-npm install
-npm run dev
+# Install dependencies
+pnpm install
+
+# Configure environment
+cp .env.example .env.local
+# Edit .env.local — add your LLM_API_KEY
+
+# Run development server
+pnpm dev
 # → http://localhost:3000
 ```
 
-## Deploy to Vercel
+## 🔧 Environment Variables
+
+| Variable | Required | Default |
+| --- | --- | --- |
+| `LLM_API_KEY` | ✅ | — |
+| `LLM_BASE_URL` | ❌ | `https://api.openai.com/v1` |
+| `LLM_MODEL` | ❌ | `gpt-4o` |
+| `GITHUB_TOKEN` | ❌ | Unauthenticated (60 req/h/IP) |
+
+## 📦 Deploy to Vercel
 
 ```bash
 vercel --prod
-# or: push to GitHub, import in vercel.com, set env vars, deploy
 ```
 
-Required env vars:
+Or push to GitHub → import at [vercel.com](https://vercel.com) → set env vars → deploy.
 
-| key | required | default |
-| --- | --- | --- |
-| `LLM_API_KEY` | yes | — |
-| `LLM_BASE_URL` | no | `https://token-plan-sgp.xiaomimimo.com/v1` |
-| `LLM_MODEL` | no | `mimo-v2.5-pro` |
-| `GITHUB_TOKEN` | no | unauthenticated (60 req/h/IP) |
-
-## URL formats supported
+## 🔗 Supported URL Formats
 
 ```
 github.com/owner/repo
@@ -50,17 +65,41 @@ github.com/owner/repo/blob/main/path/file.ts
 github.com/owner/repo/tree/main/subdir
 ```
 
-## Limits
+## ⚙️ Limits
 
-- **240 KB** total input size (roughly 25 files or full PR diff)
-- **80 KB** per file (tail truncated)
-- **25 files** max per request
-- Skips `node_modules`, lockfiles, minified bundles, build artifacts
+| Limit | Value |
+| --- | --- |
+| Total input size | 240 KB (~25 files) |
+| Per file | 80 KB (tail truncated) |
+| Max files per request | 25 |
+| Skipped | `node_modules`, lockfiles, minified bundles, build artifacts |
 
-## Theme
+## 🎨 Design
 
-Dark brutalism — ink black, bone white, acid yellow accents, hard shadows, sharp corners, mono type.
+Glassmorphism dark theme with:
 
-## License
+- Aurora gradient background with subtle ambient lighting
+- Translucent glass surfaces with backdrop blur
+- Smooth animations (fade-in, slide-up, stagger)
+- Inter + JetBrains Mono typography
+- Purple accent color system
+- Inspired by Linear, Vercel, Arc Browser, Raycast
 
-MIT
+## 🛠 Tech Stack
+
+- **Framework:** Next.js 15 (App Router)
+- **Language:** TypeScript 5.5
+- **Styling:** Tailwind CSS 3.4
+- **AI:** OpenAI-compatible API via SSE streaming
+- **GitHub:** Public API (no OAuth required)
+- **State:** Zero — fully stateless
+
+## 📄 License
+
+MIT — use it however you want.
+
+---
+
+<p align="center">
+  Built with ⚡ by <a href="https://github.com/seirakana0-wq">seirakana0-wq</a>
+</p>
